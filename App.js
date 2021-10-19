@@ -1,21 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet } from "react-native";
+import WelcomeScreen from "./app/screens/WelcomeScreen";
+import { Courgette_400Regular } from "@expo-google-fonts/courgette";
+import { useFonts } from "expo-font";
+import AppLoading from "expo-app-loading";
+import Navigator from "./app/routes/homeStack";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  let [fontLoaded] = useFonts({
+    Courgette_400Regular,
+  });
+
+  if (!fontLoaded) {
+    return <AppLoading />;
+  }
+
+  return <Navigator />;
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  background: {
+    flex: 1,
+    backgroundColor: "orange",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
